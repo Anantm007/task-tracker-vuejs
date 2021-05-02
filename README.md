@@ -4,6 +4,8 @@ A simple task tracker app made to learn Vuejs.
 
 ## Deployed Application
 
+https://task-tracker-vuejs.vercel.app/
+
 ### Credits
 
 Brad Traversy (https://www.youtube.com/watch?v=qZXt1Aom3Cs)
