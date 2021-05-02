@@ -1,8 +1,17 @@
 <template>
   <div class="container">
     <!--"title" is not dynmaic while "tasks" is, hence the v-binding -->
-    <Header title="Task Tracker" />
-    <AddTask @add-task="addTask" />
+
+    <Header
+      title="Task Tracker"
+      @toggle-add-task="toggleAddTask"
+      :showAddTask="showAddTask"
+    />
+
+    <div v-if="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
+
     <Tasks
       :tasks="tasks"
       @toggle-reminder="toggleReminder"
@@ -24,25 +33,33 @@ export default {
 
   // State
   data() {
-    return { tasks: [] };
+    return { tasks: [], showAddTask: false };
   },
 
   // Component method
   methods: {
+    // Add a new task
     async addTask(task) {
       this.tasks = [...this.tasks, task];
     },
 
+    // Toggle reminder property of a specific task object
     async toggleReminder(id) {
       this.tasks = this.tasks.map((task) =>
         task.id === id ? { ...task, reminder: !task.reminder } : task
       );
     },
 
+    // Delete a task by id
     async deleteTask(id) {
       if (confirm("Are you sure?")) {
         this.tasks = this.tasks.filter((task) => task.id !== id);
       }
+    },
+
+    // Hide/show add task form
+    async toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
     },
   },
 
