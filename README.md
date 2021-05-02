@@ -1,5 +1,13 @@
 # task-tracker-vuejs
 
+A simple task tracker app made to learn Vuejs.
+
+## Deployed Application
+
+### Credits
+
+Brad Traversy (https://www.youtube.com/watch?v=qZXt1Aom3Cs)
+
 ## Project setup
 
 ```
